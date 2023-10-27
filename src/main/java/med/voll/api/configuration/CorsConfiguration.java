@@ -1,0 +1,22 @@
+package med.voll.api.configuration;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class CorsConfiguration implements WebMvcConfigurer {
+
+    /*
+    Habilitando diferentes origens no Spring Boot
+    Para configurar o CORS e habilitar uma origem específica para consumir a API,
+    basta criar uma classe de configuração como a seguinte:
+    */
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:3000")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
+    }
+}
